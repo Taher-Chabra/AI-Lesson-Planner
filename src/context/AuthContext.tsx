@@ -1,24 +1,30 @@
-import React, { createContext, useContext, useState } from "react"
+import React, { createContext, useContext, useState, useEffect } from "react"
 
 type AuthState = {
-   isUser: boolean,
-   setIsUser: (isUser: boolean) => void
+   user: string,
+   setUser: (user: string) => void
 }
 
 const initialState: AuthState = {
-   isUser: false,
-   setIsUser: () => null
+   user: "",
+   setUser: () => null
 }
 
 const authContext = createContext<AuthState>(initialState)
 
 export function AuthProvider({children}: {children: React.ReactNode}): JSX.Element {
-   const [isUser, setIsUser] = useState<boolean>(true);
+   const [user, setUser] = useState<string>("");
+
+   useEffect(() => {
+      const storedUser = sessionStorage.getItem("user");
+      if (storedUser) setUser(storedUser);
+    }, []);
 
    const value = {
-      isUser,
-      setIsUser: (isUserLogin: boolean) => {
-         setIsUser(isUserLogin);
+      user,
+      setUser: (userCreds: string) => {
+         setUser(userCreds);
+         sessionStorage.setItem("user", userCreds);
       },
     };
 

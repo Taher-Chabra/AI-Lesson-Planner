@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 export default function UserAuth() {
-   const { isUser } = useAuth()
-   const isUserAuthenticated = isUser;
+   const { user } = useAuth()
+   const isUserAuthenticated = user;
+   console.log(isUserAuthenticated)
 
    const navigate = useNavigate();
 

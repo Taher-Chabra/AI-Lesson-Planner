@@ -10,14 +10,13 @@ const Login: React.FC = () => {
   const [username, setUsername] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
 
-  const {setIsUser} = useAuth();
+  const {setUser} = useAuth();
   const navigate = useNavigate();
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (username === 'demouser' && password == 'demopass') {
-      setIsUser(true)
-      toast.success('Login Successful!!');
+      setUser(username);
       navigate('/lesson-input')
     }
    else {
@@ -52,6 +51,7 @@ const Login: React.FC = () => {
             className="rounded-s-none"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            autoComplete="username"
           />
         </div>
 
@@ -73,6 +73,7 @@ const Login: React.FC = () => {
             className="rounded-s-none"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
           />
         </div>
         <span className="block mt-8 w-full text-center">

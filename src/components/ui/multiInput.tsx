@@ -8,6 +8,7 @@ type DynamicInputListProps = {
   type: string;
   id: string;
   placeholder: string;
+  required: boolean;
   value: string[];
   onChange: (value: string[]) => void;
 };
@@ -16,6 +17,7 @@ export default function DynamicInputList({
   type,
   id,
   placeholder,
+  required,
   value,
   onChange,
 }: DynamicInputListProps) {
@@ -45,12 +47,8 @@ export default function DynamicInputList({
     onChange(updatedMultiInput);
   };
 
-  //   useEffect(() => {
-  //     onChange(multiInput);
-  //   }, [multiInput]);
-
   return (
-    <div className="space-y-2 border border-gray-300 dark:border-gray-500 p-2 rounded-md">
+    <div className="space-y-2 border border-gray-500/50 dark:border-gray-500 p-2 rounded-md">
       {value.map((input, index) => (
          <div key={index} className="mx-0.5">
             <div className="w-full flex items-center gap-2">
@@ -60,6 +58,7 @@ export default function DynamicInputList({
                   value={input}
                   onChange={(e) => handleChange(index, e.target.value)}
                   placeholder={`${placeholder} ${index + 1}`}
+                  required={required}
                   className="flex-1 min-w-0"
                />
                {isLastInputField(index) && (

@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { useAuth } from "@/context/AuthContext";
 
 function Navbar() {
-  const { isUser } = useAuth();
+  const { user } = useAuth();
   return (
     <nav className="bg-transparent mt-1">
       <div className="flex flex-wrap items-center justify-between p-2 border-b-2 border-gray-200">
@@ -17,14 +17,21 @@ function Navbar() {
         </Link>
         
         <div>
-          <ThemeToggle />
-          { isUser ?
+          <span className="border p-1 rounded-md bg-slate-100/50 dark:bg-gray-800/50">
+            <ThemeToggle />
+          </span>
+          { user ?
             (
-              <Avatar>
-                <AvatarFallback>
-                  <UserRound className="size-3.5"/>
-                </AvatarFallback>
-              </Avatar>
+              <div className="inline ml-8">
+                <span className="underline underline-offset-2">
+                  {user}
+                </span>
+                <Avatar>
+                  <AvatarFallback>
+                    <UserRound className="size-3.5"/>
+                  </AvatarFallback>
+                </Avatar>
+              </div>
             )
             :
             (

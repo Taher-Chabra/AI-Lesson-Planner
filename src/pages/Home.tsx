@@ -1,6 +1,5 @@
 import React from "react";
 import notesImg from "@/assets/notes.png";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
@@ -29,7 +28,8 @@ const Home: React.FC = () => {
           smart planner generates engaging, structured lesson plans in
           seconds—so you can focus on what truly matters: Teaching.
         </p>
-        <Link to="/lesson-input" className="w-max text-[0.8rem] md:text-lg px-3 bg-gray-800/50 hover:bg-gray-700/50 dark:text-white dark:hover:bg-slate-900/60 dark:bg-slate-800">
+        
+        <Link to="/lesson-input" className="w-max text-[0.8rem] md:text-lg px-3 bg-gray-800/50 hover:bg-gray-700 dark:text-white dark:hover:bg-slate-900 dark:bg-slate-800 py-1.5 rounded-md text-white hover:underline hover:underline-offset-4">
           Get Started
         </Link>
       </div>

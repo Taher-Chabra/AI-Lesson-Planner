@@ -15,7 +15,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
-          <Route element={<UserAuth />}>
+          <Route>
             <Route path="lesson-input" element={<LessonInput />}>
               <Route path="response" element={<Response />} />
             </Route>
